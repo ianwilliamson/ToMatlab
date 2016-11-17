@@ -55,8 +55,12 @@ individual assignment statements.
 (* (C) 1997-1999 Harri Ojanen  
 	harri.ojanen@iki.fi
 	http://www.iki.fi/~harri.ojanen/ *)
+    
+(* Modified by Ian Williamson to improve handling of functions for complex numbers.
+	ian.williamson@utexas.edu
+	http://www.enw.me/ *)
 
-(* Last modified April 2 1999 *)
+(* Last modified November 16 2016 *)
 
 
 BeginPackage["MatlabUtils`ToMatlab`"]
@@ -238,6 +242,9 @@ ToMatlabaux[l_List] := "[" <> ToMatlabargs[l] <> "]"
 
 ToMatlabaux[Colon] = ":"
 ToMatlabaux[Abs] = "abs"
+ToMatlabaux[Im]  = "imag"
+ToMatlabaux[Re]  = "real"
+ToMatlabaux[Conjugate] = "conj"
 ToMatlabaux[Min] = "min"
 ToMatlabaux[Max] = "max"
 ToMatlabaux[Sin] = "sin"

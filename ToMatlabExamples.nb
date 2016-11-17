@@ -1,0 +1,421 @@
+(***********************************************************************
+
+                    Mathematica-Compatible Notebook
+
+This notebook can be used on any computer system with Mathematica 3.0,
+MathReader 3.0, or any compatible application. The data for the notebook 
+starts with the line of stars above.
+
+To get the notebook into a Mathematica-compatible application, do one of 
+the following:
+
+* Save the data starting with the line of stars above into a file
+  with a name ending in .nb, then open the file inside the application;
+
+* Copy the data starting with the line of stars above to the
+  clipboard, then use the Paste menu command inside the application.
+
+Data for notebooks contains only printable 7-bit ASCII and can be
+sent directly in email or through ftp in text mode.  Newlines can be
+CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
+
+NOTE: If you modify the data for this notebook not in a Mathematica-
+compatible application, you must delete the line below containing the 
+word CacheID, otherwise Mathematica-compatible applications may try to 
+use invalid cache data.
+
+For more information on notebooks and Mathematica-compatible 
+applications, contact Wolfram Research:
+  web: http://www.wolfram.com
+  email: info@wolfram.com
+  phone: +1-217-398-0700 (U.S.)
+
+Notebook reader applications are available free of charge from 
+Wolfram Research.
+***********************************************************************)
+
+(*CacheID: 232*)
+
+
+(*NotebookFileLineBreakTest
+NotebookFileLineBreakTest*)
+(*NotebookOptionsPosition[      9431,        289]*)
+(*NotebookOutlinePosition[     10098,        313]*)
+(*  CellTagsIndexPosition[     10054,        309]*)
+(*WindowFrame->Normal*)
+
+
+
+Notebook[{
+Cell[BoxData[
+    \(<< ToMatlab.m\)], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(\(?ToMatlab\)\)], "Input"],
+
+Cell[BoxData[
+    \("ToMatlab[expr]  converts the expression  expr  into matlab syntax and \
+returns it as a String.\nToMatlab[expr, name]  returns an assignment of  expr \
+ into  name as a String. name can be also a more complicated string, e.g., \
+ToMatlab[If[t,a,b],\"function y=iffun(t,a,b)\\ny\"].\nThe special symbol \
+Colon can be used to denote the matlab colon operator :, and Colon[a,b] for \
+a:b, Colon[a,b,c] for a:b:c.\nSee also  WriteMatlab  and  PrintMatlab.\nAll \
+functions accept an optional last argument that is the maximum line \
+width."\)], "Print"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(\(?PrintMatlab\)\)], "Input"],
+
+Cell[BoxData[
+    \("PrintMatlab[expr]  or  PrintMatlab[expr, name]  is like  ToMatlab but \
+instead of returning the String, it is printed on the screen. See also  \
+ToMatlab  and  WriteMatlab."\)], "Print"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(\(?WriteMatlab\)\)], "Input"],
+
+Cell[BoxData[
+    \("WriteMatlab[expr, file]  or  WriteMatlab[expr, file, name] Writes the  \
+expr  in matlab form into the given file. The second form makes this an \
+assignment into the variable  name.\nExample: f = OpenWrite[\"file.m\"]; \
+WriteMatlab[Cos[x]-x, f, y]; Close[f];\nThe file argument can also be a \
+String that gives the name of the file: WriteMatlab[Cos[x]-x, \"file.m\", y]; \
+achieves the same result as the previous example (but this limits one \
+expression per file).\nSee also  ToMatlab  and  PrintMatlab."\)], "Print"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(a = \((x + y)\)^20 // Expand\)], "Input"],
+
+Cell[BoxData[
+    \(x\^20 + 20\ x\^19\ y + 190\ x\^18\ y\^2 + 1140\ x\^17\ y\^3 + 
+      4845\ x\^16\ y\^4 + 15504\ x\^15\ y\^5 + 38760\ x\^14\ y\^6 + 
+      77520\ x\^13\ y\^7 + 125970\ x\^12\ y\^8 + 167960\ x\^11\ y\^9 + 
+      184756\ x\^10\ y\^10 + 167960\ x\^9\ y\^11 + 125970\ x\^8\ y\^12 + 
+      77520\ x\^7\ y\^13 + 38760\ x\^6\ y\^14 + 15504\ x\^5\ y\^15 + 
+      4845\ x\^4\ y\^16 + 1140\ x\^3\ y\^17 + 190\ x\^2\ y\^18 + 
+      20\ x\ y\^19 + y\^20\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[StyleBox["ToMatlab"]], "Subsection"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(ToMatlab[a]\)], "Input"],
+
+Cell[BoxData[
+    \("x.^20+20.*x.^19.*y+190.*x.^18.*y.^2+1140.*x.^17.*y.^3+4845.* ...\n  \
+x.^16.*y.^4+15504.*x.^15.*y.^5+38760.*x.^14.*y.^6+77520.*x.^13.* ...\n  \
+y.^7+125970.*x.^12.*y.^8+167960.*x.^11.*y.^9+184756.*x.^10.*y.^10+ ...\n  \
+167960.*x.^9.*y.^11+125970.*x.^8.*y.^12+77520.*x.^7.*y.^13+38760.* ...\n  \
+x.^6.*y.^14+15504.*x.^5.*y.^15+4845.*x.^4.*y.^16+1140.*x.^3.* ...\n  \
+y.^17+190.*x.^2.*y.^18+20.*x.*y.^19+y.^20;\n"\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(ToMatlab[a, "\<a\>"]\)], "Input"],
+
+Cell[BoxData[
+    \("a=x.^20+20.*x.^19.*y+190.*x.^18.*y.^2+1140.*x.^17.*y.^3+4845.* ...\n  \
+x.^16.*y.^4+15504.*x.^15.*y.^5+38760.*x.^14.*y.^6+77520.*x.^13.* ...\n  \
+y.^7+125970.*x.^12.*y.^8+167960.*x.^11.*y.^9+184756.*x.^10.*y.^10+ ...\n  \
+167960.*x.^9.*y.^11+125970.*x.^8.*y.^12+77520.*x.^7.*y.^13+38760.* ...\n  \
+x.^6.*y.^14+15504.*x.^5.*y.^15+4845.*x.^4.*y.^16+1140.*x.^3.* ...\n  \
+y.^17+190.*x.^2.*y.^18+20.*x.*y.^19+y.^20;\n"\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(ToMatlab[a, 150]\)], "Input"],
+
+Cell[BoxData[
+    \("x.^20+20.*x.^19.*y+190.*x.^18.*y.^2+1140.*x.^17.*y.^3+4845.*x.^16.*y.^\
+4+15504.*x.^15.*y.^5+38760.*x.^14.*y.^6+77520.*x.^13.*y.^7+125970.*x.^12.*y.^\
+8+ ...\n  \
+167960.*x.^11.*y.^9+184756.*x.^10.*y.^10+167960.*x.^9.*y.^11+125970.*x.^8.*y.^\
+12+77520.*x.^7.*y.^13+38760.*x.^6.*y.^14+15504.*x.^5.*y.^15+4845.*x.^4.* ...\n\
+  y.^16+1140.*x.^3.*y.^17+190.*x.^2.*y.^18+20.*x.*y.^19+y.^20;\n"\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(ToMatlab[a, "\<a\>", 150]\)], "Input"],
+
+Cell[BoxData[
+    \("a=x.^20+20.*x.^19.*y+190.*x.^18.*y.^2+1140.*x.^17.*y.^3+4845.*x.^16.*y.\
+^4+15504.*x.^15.*y.^5+38760.*x.^14.*y.^6+77520.*x.^13.*y.^7+125970.*x.^12.*y.^\
+8+ ...\n  \
+167960.*x.^11.*y.^9+184756.*x.^10.*y.^10+167960.*x.^9.*y.^11+125970.*x.^8.*y.^\
+12+77520.*x.^7.*y.^13+38760.*x.^6.*y.^14+15504.*x.^5.*y.^15+4845.*x.^4.* ...\n\
+  y.^16+1140.*x.^3.*y.^17+190.*x.^2.*y.^18+20.*x.*y.^19+y.^20;\n"\)], "Output"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[StyleBox["PrintMatlab"]], "Subsection"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(PrintMatlab[a]\)], "Input"],
+
+Cell[BoxData[
+    \("x.^20+20.*x.^19.*y+190.*x.^18.*y.^2+1140.*x.^17.*y.^3+4845.* ...\n  \
+x.^16.*y.^4+15504.*x.^15.*y.^5+38760.*x.^14.*y.^6+77520.* ...\n  \
+x.^13.*y.^7+125970.*x.^12.*y.^8+167960.*x.^11.*y.^9+184756.* ...\n  \
+x.^10.*y.^10+167960.*x.^9.*y.^11+125970.*x.^8.*y.^12+77520.* ...\n  \
+x.^7.*y.^13+38760.*x.^6.*y.^14+15504.*x.^5.*y.^15+4845.* ...\n  \
+x.^4.*y.^16+1140.*x.^3.*y.^17+190.*x.^2.*y.^18+20.*x.*y.^19+ ...\n  y.^20;\n"\
+\)], "Print"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(PrintMatlab[a, "\<a\>"]\)], "Input"],
+
+Cell[BoxData[
+    \("a=x.^20+20.*x.^19.*y+190.*x.^18.*y.^2+1140.*x.^17.*y.^3+4845.* ...\n  \
+x.^16.*y.^4+15504.*x.^15.*y.^5+38760.*x.^14.*y.^6+77520.* ...\n  \
+x.^13.*y.^7+125970.*x.^12.*y.^8+167960.*x.^11.*y.^9+184756.* ...\n  \
+x.^10.*y.^10+167960.*x.^9.*y.^11+125970.*x.^8.*y.^12+77520.* ...\n  \
+x.^7.*y.^13+38760.*x.^6.*y.^14+15504.*x.^5.*y.^15+4845.* ...\n  \
+x.^4.*y.^16+1140.*x.^3.*y.^17+190.*x.^2.*y.^18+20.*x.*y.^19+ ...\n  y.^20;\n"\
+\)], "Print"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(PrintMatlab[a, 150]\)], "Input"],
+
+Cell[BoxData[
+    \("x.^20+20.*x.^19.*y+190.*x.^18.*y.^2+1140.*x.^17.*y.^3+4845.*x.^16.*y.^\
+4+15504.*x.^15.*y.^5+38760.*x.^14.*y.^6+77520.*x.^13.*y.^7+125970.*x.^12.*y.^\
+8+ ...\n  \
+167960.*x.^11.*y.^9+184756.*x.^10.*y.^10+167960.*x.^9.*y.^11+125970.*x.^8.*y.^\
+12+77520.*x.^7.*y.^13+38760.*x.^6.*y.^14+15504.*x.^5.*y.^15+4845.*x.^4.* ...\n\
+  y.^16+1140.*x.^3.*y.^17+190.*x.^2.*y.^18+20.*x.*y.^19+y.^20;\n"\)], "Print"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(PrintMatlab[a, "\<a\>", 150]\)], "Input"],
+
+Cell[BoxData[
+    \("a=x.^20+20.*x.^19.*y+190.*x.^18.*y.^2+1140.*x.^17.*y.^3+4845.*x.^16.*y.\
+^4+15504.*x.^15.*y.^5+38760.*x.^14.*y.^6+77520.*x.^13.*y.^7+125970.*x.^12.*y.^\
+8+ ...\n  \
+167960.*x.^11.*y.^9+184756.*x.^10.*y.^10+167960.*x.^9.*y.^11+125970.*x.^8.*y.^\
+12+77520.*x.^7.*y.^13+38760.*x.^6.*y.^14+15504.*x.^5.*y.^15+4845.*x.^4.* ...\n\
+  y.^16+1140.*x.^3.*y.^17+190.*x.^2.*y.^18+20.*x.*y.^19+y.^20;\n"\)], "Print"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[TextData[StyleBox["WriteMatlab"]], "Subsection"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(Directory[]\)], "Input"],
+
+Cell[BoxData[
+    \("C:\\"\)], "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(f = OpenWrite["\<tomatlab-test1.m\>"]\)], "Input"],
+
+Cell[BoxData[
+    \(OutputStream["tomatlab-test1.m", 4]\)], "Output"]
+}, Open  ]],
+
+Cell[BoxData[
+    \(WriteMatlab[a, f]\)], "Input"],
+
+Cell[BoxData[
+    \(WriteMatlab[a, f, "\<a\>"]\)], "Input"],
+
+Cell[BoxData[
+    \(WriteMatlab[a, f, 120]\)], "Input"],
+
+Cell[BoxData[
+    \(WriteMatlab[a, f, "\<a\>", 120]\)], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(Close[f]\)], "Input"],
+
+Cell[BoxData[
+    \("tomatlab-test1.m"\)], "Output"]
+}, Open  ]],
+
+Cell[BoxData[
+    \(WriteMatlab[a, "\<tomatlab-test2.m\>"]\)], "Input"],
+
+Cell[BoxData[
+    \(WriteMatlab[a, "\<tomatlab-test3.m\>", "\<a\>"]\)], "Input"],
+
+Cell[BoxData[
+    \(WriteMatlab[a, "\<tomatlab-test4.m\>", 120]\)], "Input"],
+
+Cell[BoxData[
+    \(WriteMatlab[a, "\<tomatlab-test5.m\>", "\<a\>", 120]\)], "Input"]
+}, Open  ]]
+},
+FrontEndVersion->"Microsoft Windows 3.0",
+ScreenRectangle->{{0, 1280}, {0, 991}},
+WindowSize->{591, 650},
+WindowMargins->{{2, Automatic}, {Automatic, 5}},
+Magnification->1
+]
+
+
+(***********************************************************************
+Cached data follows.  If you edit this Notebook file directly, not using
+Mathematica, you must remove the line containing CacheID at the top of 
+the file.  The cache data will then be recreated when you save this file 
+from within Mathematica.
+***********************************************************************)
+
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+
+(*NotebookFileOutline
+Notebook[{
+Cell[1709, 49, 46, 1, 30, "Input"],
+
+Cell[CellGroupData[{
+Cell[1780, 54, 46, 1, 30, "Input"],
+Cell[1829, 57, 571, 8, 196, "Print"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[2437, 70, 49, 1, 30, "Input"],
+Cell[2489, 73, 208, 3, 63, "Print"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[2734, 81, 49, 1, 30, "Input"],
+Cell[2786, 84, 543, 7, 158, "Print"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[3366, 96, 61, 1, 30, "Input"],
+Cell[3430, 99, 474, 7, 86, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[3941, 111, 50, 0, 47, "Subsection"],
+
+Cell[CellGroupData[{
+Cell[4016, 115, 44, 1, 30, "Input"],
+Cell[4063, 118, 447, 6, 143, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[4547, 129, 53, 1, 30, "Input"],
+Cell[4603, 132, 449, 6, 143, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[5089, 143, 49, 1, 30, "Input"],
+Cell[5141, 146, 423, 6, 162, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[5601, 157, 58, 1, 30, "Input"],
+Cell[5662, 160, 425, 6, 162, "Output"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[6136, 172, 53, 0, 47, "Subsection"],
+
+Cell[CellGroupData[{
+Cell[6214, 176, 47, 1, 30, "Input"],
+Cell[6264, 179, 456, 7, 158, "Print"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[6757, 191, 56, 1, 30, "Input"],
+Cell[6816, 194, 458, 7, 158, "Print"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[7311, 206, 52, 1, 30, "Input"],
+Cell[7366, 209, 422, 6, 158, "Print"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[7825, 220, 61, 1, 30, "Input"],
+Cell[7889, 223, 424, 6, 158, "Print"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[8362, 235, 53, 0, 47, "Subsection"],
+
+Cell[CellGroupData[{
+Cell[8440, 239, 44, 1, 30, "Input"],
+Cell[8487, 242, 40, 1, 29, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[8564, 248, 70, 1, 30, "Input"],
+Cell[8637, 251, 69, 1, 29, "Output"]
+}, Open  ]],
+Cell[8721, 255, 50, 1, 30, "Input"],
+Cell[8774, 258, 59, 1, 30, "Input"],
+Cell[8836, 261, 55, 1, 30, "Input"],
+Cell[8894, 264, 64, 1, 30, "Input"],
+
+Cell[CellGroupData[{
+Cell[8983, 269, 41, 1, 30, "Input"],
+Cell[9027, 272, 52, 1, 29, "Output"]
+}, Open  ]],
+Cell[9094, 276, 71, 1, 30, "Input"],
+Cell[9168, 279, 80, 1, 30, "Input"],
+Cell[9251, 282, 76, 1, 30, "Input"],
+Cell[9330, 285, 85, 1, 30, "Input"]
+}, Open  ]]
+}
+]
+*)
+
+
+
+
+(***********************************************************************
+End of Mathematica Notebook file.
+***********************************************************************)
+
